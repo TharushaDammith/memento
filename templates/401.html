@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>401 Login required</title>
+
+        {% include "header.html" %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-initial.css') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/401.css') }}">
+    </head>
+    <body>
+        {% include "navbar-initial.html" %}
+
+        <section id="Error">
+            <div class="bg-sqr">
+                <div class="square sqr1"></div>
+                <div class="square sqr2"></div>
+                <div class="square sqr3"></div>
+                <div class="square sqr4"></div>
+                <div class="square sqr5"></div>
+                <div class="square sqr6"></div>
+                <div class="square sqr7"></div>
+                <div class="square sqr8"></div>
+                <div class="square sqr9"></div>
+                <div class="square sqr10"></div>
+                <div class="square sqr11"></div>
+            </div>
+
+            <div class="error-text">
+                <p class="main-error">401</p>
+                <p class="main-text">Login required</p>
+                <a class="help-link" href="{{ url_for('login') }}">Login</a>
+                <a class="help-link" href="{{ url_for('sign_up') }}">Sign up</a>
+            </div>
+        </section>
+        <footer>
+            {% include "footer.html" %}
+
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+        </footer>
+    </body>
+</html>

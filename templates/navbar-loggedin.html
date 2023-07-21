@@ -1,0 +1,63 @@
+<nav class="navbar">
+    <a class="nav-brand" href="{{ url_for('home') }}">Memento</a>
+
+    <ul class="user-list">
+        <li class="nav-item">
+            {% if posts %}
+            <a class="nav-link create hide-in-mobile non-draggable">Create</a>
+            {% else %}
+            <a class="nav-link create hide-in-mobile non-draggable" href="{{ url_for('dashboard') }}" target="_blank">Create</a>
+            {% endif %}
+        </li>
+
+        <li class="nav-item dark mode item-margin-desktop">
+            <img class="mode non-draggable"  src="{{ url_for('static', filename='icons/dark-mode.png') }}">
+        </li>
+
+        <li class="nav-item light mode item-margin-desktop">
+            <img class="mode non-draggable" src="{{ url_for('static', filename='icons/light-mode.png') }}">
+        </li>
+
+        <li class="nav-item drop-down item-margin-mobile">
+            {% if current_user.is_authenticated %}
+                <div class="user-menu">{{ current_user.name[:2] }}</div>
+            {% else %}
+                <div class="user-menu">AN</div>
+            {% endif %}
+            <ul class="menu-data">
+                <li class="menu-item" onclick="RedirectTo('dashboard')">
+                    <a class="menu-link">Dashboard</a>
+                </li>
+                <li class="menu-item" onclick="RedirectTo('calender')">
+                    <a class="menu-link">Calender</a>
+                </li>
+                <li class="menu-item" onclick="RedirectTo('settings')">
+                    <a class="menu-link">Settings</a>
+                </li>
+                <li class="hr-margin"><hr class="menu-hr"></li>
+                <li class="menu-item" onclick="RedirectTo('log_out')">
+                    <a class="menu-link">Log out</a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <div class="menu show-in-mobile">
+                <hr class="menu-line">
+                <hr class="menu-line menu-line-margin">
+                <hr class="menu-line">
+            </div>
+        </li>
+    </ul>
+
+    <ul class="nav-list">
+        <li class="create-box">
+            {% if posts %}
+            <a class="create non-draggable">Create</a>
+            {% else %}
+            <a class="create non-draggable" href="{{ url_for('dashboard') }}">Create</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>

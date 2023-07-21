@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "header.html" %}
+
+        <!--Calender css-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/calender.css') }}">
+
+        <!--Navbar css-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-loggedin.css') }}">
+    </head>
+    <body>
+        {% include "navbar-loggedin.html" %}
+
+        <input id="Mode" type="hidden" value="{{ theme }}">
+        <input id="Tasks" type="hidden" value="{{ tasks }}">
+        <input id="Limits" type="hidden" value="{{ lim }}">
+
+        <section id="Calender">
+            <div class="overlay" onclick="CloseSchedule(this)"></div>
+
+            <div class="month-toggle">
+                <i class="bi bi-caret-left-fill" onclick="PreviousMonth()"></i>
+                <p class="month"></p>
+                <i class="bi bi-caret-right-fill" onclick="NextMonth()"></i>
+            </div>
+
+            <div class="month-box">
+                {% for i in range(4): %}
+                <div class="week-box">
+                    {% for n in range(7): %}
+                    <div class="date box" onclick="OpenSchedule(this)" data-value="No tasks on this day."></div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="event-box box">
+                <p class="event-date">02 Feb 2023</p>
+                <ul class="event-list">
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            {% include "footer.html" %}
+
+            <!--Calender js-->
+            <script src="{{ url_for('static', filename='js/calender.js') }}"></script>
+
+            <!--Navbar js-->
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+            <!--Navbar dropdown js-->
+            <script src="{{ url_for('static', filename='js/navbar-loggedin.js') }}"></script>
+        </footer>
+    </body>
+</html>

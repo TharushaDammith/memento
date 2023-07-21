@@ -1,0 +1,294 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#Settings {
+    padding: 2rem 3rem;
+    transition: padding 1s;
+}
+
+.settings-nav {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.title {
+    font-size: 1.5rem;
+    left: 0;
+    position: absolute;
+}
+
+.sub-list {
+    display: flex;
+}
+
+.sub-margin {
+    margin: 0 2rem;
+}
+
+.sub-title {
+    border-bottom: 1px solid black;
+    cursor: default;
+    font-weight: 400;
+}
+
+.sub-title-box {
+    display: none;
+}
+
+.user-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.user-item {
+    width: 50%;
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+.right-item > * {
+    margin-left: 1rem;
+}
+
+.user-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.disable {
+    opacity: .5;
+}
+
+.error-box {
+    position: relative;
+    width: 100%;
+}
+
+.error {
+    color: red;
+    font-size: .8rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.user-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    outline: none;
+    width: calc(100% - 1rem);
+}
+.user-input:focus {
+    border-width: 2px;
+}
+
+.input-error {
+    border-color: red !important;
+}
+
+.password-input {
+    padding-right: 1.5rem;
+    width: 100% !important;
+}
+
+.password-box {
+    align-items: center;
+    display: flex;
+    position: relative;
+    width: calc(100% - 1rem);
+}
+
+.bi-eye-fill {
+    display: none;
+}
+
+.bi {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+@media (max-width: 900px) {
+    #Settings {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .settings-nav {
+        margin-bottom: 3rem;
+    }
+
+    .sub-list {
+        display: none;
+    }
+
+    .user-item, .user-input, .password-box {
+        width: 100%;
+    }
+
+    .right-item > * {
+        margin: 0;
+    }
+
+    .sub-title-box {
+        display: flex;
+        justify-content: end;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+}
+
+.row-box {
+    align-items: center;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.theme {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    width: 6rem;
+}
+
+.light-theme {
+    background-color: rgb(217, 217, 217);
+    color: black !important;
+}
+
+.dark-theme {
+    background-color: rgb(58, 71, 80);
+    color: white;
+}
+
+.checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.task-box {
+    margin-left: 1rem;
+}
+
+.task-status {
+    margin-top: .5rem;
+    padding-left: .7rem;
+}
+
+.status-box {
+    display: flex;
+    margin-bottom: .5rem;
+}
+
+.status {
+    border-radius: 2px;
+    height: 1rem;
+    margin-right: .5rem;
+    width: 1rem;
+}
+
+.red {
+    background-color: rgb(236, 53, 53);
+}
+
+.yellow {
+    background-color: rgb(238, 223, 87);
+}
+
+.green {
+    background-color: rgb(113, 191, 135);
+}
+
+.date-limit {
+    height: 1rem;
+    width: 1.5rem;
+    padding-bottom: .2rem;
+    padding-left: .25rem;
+}
+
+@media (max-width: 600px) {
+    .task-box {
+        margin: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    .error {
+        top: -1rem;
+    }
+}
+
+.file-options {
+    height: 2.5rem;
+    position: relative;
+}
+
+.file-btn {
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    height: 2.5rem;
+    position: absolute;
+    transition: width 1s, height 1s;
+    width: 10rem;
+}
+
+.save {
+    background-color: rgb(33, 133, 213);
+    right: 0;
+}
+.save:active {
+    background-color: rgb(26, 106, 170);
+}
+
+.delete {
+    align-items: center;
+    background-color: rgb(236, 53, 53);
+    display: flex;
+    justify-content: center;
+}
+.delete:active {
+    background-color: rgb(132, 12, 12);
+}
+
+@media (max-width: 500px) {
+    .file-btn {
+        font-size: .8rem;
+        width: 7rem;
+    }
+}
+
+.border-white {
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+.dark-mode {
+    background-color: rgb(48, 56, 65);
+    color: white;
+}

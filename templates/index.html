@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "header.html" %}
+
+        <!--navbar-initial is the navigation bar if the user ISN'T logged in-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-initial.css') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    </head>
+    <body>
+        {% include "navbar-initial.html" %}
+
+        <section id="Home">
+            <div class="bg-sqr">
+                <div class="square sqr1"></div>
+                <div class="square sqr2"></div>
+                <div class="square sqr3"></div>
+                <div class="square sqr4"></div>
+                <div class="square sqr5"></div>
+                <div class="square sqr6"></div>
+                <div class="square sqr7"></div>
+                <div class="square sqr8"></div>
+                <div class="square sqr9"></div>
+                <div class="square sqr10"></div>
+                <div class="square sqr11"></div>
+            </div>
+
+            <div class="main-box">
+                <div class="main-text">
+                    <p class="main-description">Get organized, accomplish more with <span class="blue-color semi-bold">Memento</span>.</p>
+                    <button class="main-btn" onclick="ReadMore()">Read more</button>
+                </div>
+
+                <div class="note-box">
+                    <div class="note">
+                        <div style="background-image: url('{{ url_for('static', filename='images/bridge-project.jpg') }}')" class="note-img">
+                        </div>
+                        <div class="note-content box">
+                            <textarea class="note-text txt" name="description" autofocus>Research simulation software for the bridge project.</textarea>
+                            <div class="note-options">
+                                <div class="date-box">
+                                    <div class="date-clone date-label"></div>
+                                    <input class="date" type="date">
+                                </div>
+                                <img class="checkmark" src="{{ url_for('static', filename='icons/correct.png') }}" onclick="MarkAsChecked(this)">
+                                <input class="checkmark-input" name="checkmark">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note bottom-note">
+                        <div style="background-image: url('{{ url_for('static', filename='images/report-project.jpg') }}')" class="note-img">
+                        </div>
+                        <div class="note-content box">
+                            <textarea class="note-text txt" name="description" autofocus>need to schedule a meeting to discuss our report on Cape York.</textarea>
+                            <div class="note-options">
+                                <div class="date-box">
+                                    <div class="date-clone date-label"></div>
+                                    <input class="date" type="date">
+                                </div>
+                                <img class="checkmark" src="{{ url_for('static', filename='icons/correct.png') }}" onclick="MarkAsChecked(this)">
+                                <input class="checkmark-input" name="checkmark">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Info">
+            <div class="service-box">
+                <img src="{{ url_for('static', filename='icons/writing.png') }}" class="service-img">
+                <p class="service-text">Create an unlimited <br> amounts of tasks</p>
+            </div>
+
+            <div class="service-box">
+                <img src="{{ url_for('static', filename='icons/photo.png') }}" class="service-img">
+                <p class="service-text">Set background images <br> for your tasks</p>
+            </div>
+
+            <div class="service-box">
+                <img src="{{ url_for('static', filename='icons/calendar.png') }}" class="service-img">
+                <p class="service-text">See your tasks on a <br> calender</p>
+            </div>
+        </section>
+
+        <section id="Calender">
+            <div class="month-toggle">
+                <i class="bi bi-caret-left-fill" onclick="PreviousMonth()"></i>
+                <p class="month">March</p>
+                <i class="bi bi-caret-right-fill" onclick="NextMonth()"></i>
+            </div>
+
+            <div class="month-box">
+                {% for i in range(4): %}
+                <div class="week-box">
+                    {% for n in range(7): %}
+                    <div class="date-sqr"></div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <p class="additional-text">Stay on top of things with Memento, your personal <span class="blue-color medium">to-do list</span> assistant.</p>
+        </section>
+
+        <footer>
+            {% include "footer.html" %}
+
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+            <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+        </footer>
+    </body>
+</html>

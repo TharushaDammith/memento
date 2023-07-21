@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "header.html" %}
+
+        {% if current_user.is_authenticated %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-loggedin.css') }}">
+        {% else %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-initial.css') }}">
+        {% endif %}
+
+        <!--About css-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    </head>
+    <body>
+        {% if current_user.is_authenticated %}
+            {% include "navbar-loggedin.html" %}
+        {% else %}
+            {% include "navbar-initial.html" %}
+        {% endif %}
+
+        <input id="Mode" type="hidden" value="{{ theme }}">
+
+        <section id="AboutMe">
+            <p class="about-heading">About</p>
+
+            <p class="about-description">
+                As a web developer with a passion for crafting functional and visually appealing websites, I set out to create a simple and user-friendly to-do list app that would stand out from the overwhelming and confusing options available in the market. My frustration with existing solutions fueled my desire to build something unique, and I believe that Memento is the perfect embodiment of my vision. <br><br>Crafted with Python (Flask), HTML, CSS, JavaScript, and Figma, Memento is a to-do list web app designed to cater to the needs of busy individuals, small businesses, and anyone looking to streamline their task management. I put in a lot of thought and effort into the design process, ensuring that the end product was not only functional but also had a modern and stylish look that users would find appealing. <br><br>I believe that small businesses and independent users should have access to quality websites, and I am thrilled to bring my skills and creativity to the table with Memento. I am confident that users will find the app easy to use, and I hope that it will become an indispensable tool for anyone looking to manage their tasks and increase their productivity. <br><br>I am proud of the work that I have put into Memento, and I am eager to see how it will be received by the public. Whether you are an individual looking to simplify your task management or a small business owner in need of a functional and visually appealing to-do list app, Memento is the perfect solution for you.
+            </p>
+
+            <div class="contact">
+                <a class="bi bi-envelope" href="mailto:tharushadgunawardane@gmail.com"></a>
+                <a class="bi bi-linkedin" href="https://www.linkedin.com/in/tharusha-gunawardane-80a014252"></a>
+                <a class="bi bi-person" href="https://tharushag-lkb1.onrender.com"></a>
+            </div>
+        </section>
+
+        <footer>
+            {% include "footer.html" %}
+
+            <!--About js-->
+            <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+
+            <!--Navbar js-->
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+            {% if current_user.is_authenticated %}
+            <script src="{{ url_for('static', filename='js/navbar-loggedin.js') }}"></script>
+            {% endif %}
+        </footer>
+    </body>
+</html>

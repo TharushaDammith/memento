@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "header.html" %}
+
+        <!--Settings css-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+
+        <!--navbar-loggedin is the navigation bar of the user IS logged in-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-loggedin.css') }}">
+
+        <!--navbar-initial is the navigation bar if the user ISN'T logged in-->
+<!--        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-initial.css') }}">-->
+    </head>
+    <body>
+<!--        {% include "navbar-initial.html" %}-->
+        {% include "navbar-loggedin.html" %}
+
+        <input id="Mode" type="hidden" value="{{ theme }}">
+
+        <section id="Settings">
+        <form onsubmit="CheckErrors()" method="POST">
+            <div class="settings-nav">
+                <p class="title">Settings</p>
+                <ul class="sub-list">
+                    <li class="sub-item">
+                        <p class="sub-title border">Personal info</p>
+                    </li>
+
+                    <li class="sub-item sub-margin">
+                        <p class="sub-title border">General settings</p>
+                    </li>
+
+                    <li class="sub-item">
+                        <p class="sub-title border">Delete account</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="user-details">
+                <div class="sub-title-box">
+                    <p class="sub-title border">Personal info</p>
+                </div>
+                <div class="user-item">
+                    <label class="user-label">Name</label>
+                    <input class="user-input border" type="text" name="name" value="{{ name }}" required>
+                </div>
+
+                <div class="user-item right-item">
+                    <div class="error-box">
+                        <label class="user-label email">Email</label>
+                        {% with message = get_flashed_messages() %}
+                            {% if message %}
+                            <p class="error">{{ message[1] }}</p>
+                            {% endif %}
+
+                            {% if not verify and not message[1] %}
+                            <p class="error">*Verify Email</p>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    {% if not verify %}
+                    <input id="Email" class="user-input input-error border" name="email" type="email" value="{{ email }}" required>
+                    {% else %}
+                    <input id="Email" class="user-input border" name="email" type="email" value="{{ email }}" required>
+                    {% endif %}
+                </div>
+
+                <div class="user-item">
+                    <div class="error-box">
+                        <label class="user-label">Old password</label>
+                        {% with message = get_flashed_messages() %}
+                            {% if message %}
+                            <p id="OldPasswordError" class="error">{{ message[0] }}</p>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="password-box">
+                        {% with message = get_flashed_messages() %}
+                            {% if message %}
+                            <input class="user-input password-input password border input-error" name="password" type="password">
+                            {% else %}
+                            <input class="user-input password-input password border" name="password" type="password">
+                            {% endif %}
+                        {% endwith %}
+                        <i class="bi bi-eye-fill eye-pass"></i>
+                        <i class="bi bi-eye-slash-fill eye-slash-pass"></i>
+                    </div>
+                </div>
+
+                <div class="user-item right-item">
+                    <div class="error-box">
+                        <label class="user-label">New password</label>
+                        <p id="PasswordError" class="error"></p>
+                    </div>
+                    <div class="password-box">
+                        <input class="user-input password-input confirm-password border" name="new-password" type="password">
+                        <i class="bi bi-eye-fill eye-confirm"></i>
+                        <i class="bi bi-eye-slash-fill eye-slash-confirm"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-details">
+                <div class="sub-title-box">
+                    <p class="sub-title border">General settings</p>
+                </div>
+
+                <div class="user-item">
+                    <div class="row-box">
+                        <p class="user-label">Theme</p>
+                        {% if theme == "Light" %}
+                        <div class="theme light-theme">Light</div>
+                        <div style="display: none" class="theme dark-theme">Dark</div>
+                        <input id="Theme" type="hidden" name="theme" value="Light">
+                        {% else %}
+                        <div style="display: none" class="theme light-theme">Light</div>
+                        <div class="theme dark-theme">Dark</div>
+                        <input id="Theme" type="hidden" name="theme" value="Dark">
+                        {% endif %}
+                    </div>
+
+<!--                    <div class="row-box">-->
+<!--                        <p class="user-label disable">Email Alert</p>-->
+<!--                        <input class="checkbox" type="checkbox" disabled>-->
+<!--                    </div>-->
+                </div>
+
+                <div class="user-item">
+                    <div class="task-box">
+                        <div class="error-box">
+                            <p class="user-label">Task status (days left)</p>
+                            <p id="TaskError" class="error"></p>
+                        </div>
+                        <div class="task-status">
+                            <div class="status-box">
+                                <div class="status red"></div>
+                                <input class="user-input date-limit border min-lim" type="number" name="min-lim" value="{{ def_val[0] }}" min="1" required>
+                            </div>
+
+                            <div class="status-box">
+                                <div class="status yellow"></div>
+                                <input class="user-input date-limit border mid-lim" type="number" name="max-lim" value="{{ def_val[1] }}" min="1" required>
+                            </div>
+
+                            <div class="status-box">
+                                <div class="status green"></div>
+                                <input class="user-input date-limit border max-lim" type="text" value="{{ def_val[1] }}+" min="1" readonly required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="file-options">
+                <button class="file-btn delete" type="submit" name="delete" onclick="Delete()">Delete account</button>
+                <button class="file-btn save" type="submit" name="save">Save changes</button>
+            </div>
+        </form>
+        </section>
+
+        <footer>
+            {% include "footer.html" %}
+
+            <!--Settings js-->
+            <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+
+            <!--Navbar js-->
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+            <!--Navbar dropdown js-->
+            <script src="{{ url_for('static', filename='js/navbar-loggedin.js') }}"></script>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,204 @@
+.navbar {
+    align-items: center;
+    color: white;
+    background-color: rgb(58, 71, 80);
+    display: flex;
+    font-family: "Nunito", sans-serif;
+    padding: 1.5rem 3rem;
+    position: relative;
+    transition: padding 1s;
+    z-index: 100;
+}
+
+.nav-brand {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.user-list {
+    align-items: center;
+    display: flex;
+    height: 2.75rem;
+    position: absolute;
+    right: 3rem;
+    transition: right 1s, height 1s;
+    z-index: 10;
+}
+
+.mode {
+    cursor: pointer;
+    height: 100%;
+    width: auto;
+}
+
+.item-margin-desktop {
+    margin: 0 1.5rem;
+    transition: margin 1s;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.create {
+    background-color: rgb(33, 133, 213);
+    border-radius: 50px;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 200;
+    cursor: pointer;
+    padding: .5rem 1.2rem;
+}
+.create:active {
+    background-color: rgb(26, 106, 170);
+}
+
+.light {
+    display: none;
+}
+
+.nav-link {
+    font-size: 1.4rem;
+    font-weight: 200;
+}
+
+.drop-down {
+    border-radius: 50%;
+}
+
+.user-menu {
+    align-items: center;
+    background-color: rgb(79, 97, 110);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    font-weight: 200;
+    height: 2.75rem;
+    justify-content: center;
+    transition: height 1s, width 1s;
+    width: 2.75rem;
+}
+
+.menu-data {
+    background-color: rgb(79, 97, 110);
+    border-radius: .5rem;
+    display: none;
+    font-weight: 200;
+    margin-top: .5rem;
+    position: absolute;
+    padding: .8rem 0;
+    right: 0;
+}
+.menu-data-on {
+    display: block;
+}
+
+.menu-line {
+    border: 1px solid rgba(255, 255, 255, .5);
+    margin: .4rem 0;
+    width: 100%;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: .2rem 1rem;
+    width: 6rem;
+}
+.menu-item:active {
+    background-color: rgb(58, 71, 80);
+}
+
+.hide-in-mobile {
+    display: block;
+}
+
+.menu {
+    cursor: pointer;
+    display: none;
+    width: 2rem;
+}
+
+.menu-hr {
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+hr {
+    margin: .5rem 0;
+}
+
+.menu-line-margin {
+    margin: .5rem 0;
+}
+
+.menu-line {
+    border: 1px solid white;
+}
+
+.nav-list {
+    display: flex;
+    height: 0;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 5.7rem;
+    width: 100%;
+}
+.open-nav-list {
+    height: 4.75rem;
+}
+
+.create-box {
+    display: flex;
+    height: 2.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 1.5rem 1rem;
+    }
+
+    .user-list {
+        right: 1rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .nav-list {
+        width: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .hide-in-mobile {
+        display: none;
+    }
+
+    .show-in-mobile {
+        display: block;
+    }
+
+    .nav-list {
+        background-color: rgb(79, 97, 110);
+    }
+
+    .user-list {
+        height: 2.3rem;
+    }
+
+    .user-menu {
+        height: 2.3rem;
+        width: 2.3rem;
+    }
+
+    .item-margin-desktop {
+        margin: 0;
+    }
+
+    .item-margin-mobile {
+        margin: 0 .5rem;
+    }
+}

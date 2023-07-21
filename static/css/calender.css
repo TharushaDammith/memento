@@ -1,0 +1,193 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+#Calender {
+    padding: 1rem 2rem 3rem;
+    position: relative;
+    transition: padding 1s;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.show-overlay {
+    display: block;
+}
+
+.month-toggle {
+    align-items: center;
+    display: flex;
+    position: absolute;
+    right: 3rem;
+}
+
+.bi {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.month {
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: right 1s;
+}
+
+.month-box {
+    margin-top: 3rem;
+}
+
+.week-box {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem;
+    transition: gap 1s;
+}
+
+.date {
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-basis: 100%;
+    font-size: calc(1rem + 1vw);
+    height: 8vw;
+    justify-content: center;
+    transition: height 1s, border-radius 1s;
+}
+
+.red {
+    border: 3px solid rgb(230, 54, 54);
+}
+
+.yellow {
+    border: 3px solid rgb(238, 223, 87);
+}
+
+.green {
+    border: 3px solid rgb(113, 191, 135);
+}
+
+.blue {
+    background-color: rgb(33, 133, 213) !important;
+    color: rgb(255, 255, 255);
+}
+
+@media (max-width: 900px) {
+    #Calender {
+        padding: 1rem 0 2rem;
+    }
+
+    .month-toggle {
+        right: 1rem;
+    }
+
+    .week-box {
+        gap: 1rem;
+    }
+
+    .red, .green, .yellow {
+        border-width: 2px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .week-box {
+        gap: .5rem;
+    }
+
+    .red, .yellow, .green {
+        border-width: 1px;
+    }
+
+    .date {
+        height: 10vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .date {
+        border-radius: 8px;
+    }
+}
+
+.event-box {
+    align-items: center;
+    background-color: rgb(217, 217, 217);
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    height: 0;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    transition: height 1s;
+    width: 100%;
+    z-index: 50;
+}
+.open-event-box {
+    height: 35vh !important;
+}
+
+.event-date {
+    font-size: 1.2rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.event-list {
+    height: 10rem;
+    overflow-y: auto;
+    padding: 0 1rem;
+}
+
+.event-item {
+    margin-bottom: .5rem;
+    display: flex;
+}
+
+.event-link {
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.event-border {
+    border-bottom: 1px solid black;
+}
+
+@media (max-width: 600px) {
+    #Calender {
+        height: 50vh;
+    }
+
+    .event-date {
+        top: .5rem;
+        right: .5rem;
+        font-size: .8rem;
+    }
+}
+
+
+.dark-bg {
+    background-color: rgb(48, 56, 65);
+    color: white !important;
+}
+
+.dark-box {
+    background-color: rgb(58, 71, 80);
+}
+
+.color-white {
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}

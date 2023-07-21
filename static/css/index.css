@@ -1,0 +1,603 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+/* GENERAL */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+textarea {
+    background-color: transparent;
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+    text-align: justify;
+    width: 100%;
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, .5);
+}
+
+#Home {
+    height: calc(100vh - 91px);
+}
+
+/* Home */
+
+.main-box {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.main-description {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    width: 22ch;
+}
+
+.blue-color {
+    color: rgb(33, 133, 213);
+}
+
+.semi-bold {
+    font-weight: 600;
+}
+
+.main-btn {
+    background-color: rgb(79, 97, 110);
+    border: none;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: 400;
+    outline: none;
+    padding: .7rem 1rem;
+}
+.main-btn:active {
+    background-color: rgb(46, 57, 64);
+}
+
+/* Note */
+
+.note-box {
+    height: 21rem;
+    width: 32rem;
+    position: relative;
+}
+
+.bottom-note {
+    position: absolute !important;
+    right: 0;
+    top: 3rem;
+    transition: left 1s, top 1s;
+    z-index: 0 !important;
+}
+
+.note {
+    border-radius: 12px;
+    box-shadow: 0 0 5px rgb(0, 0, 0, .25);
+    height: 18rem;
+    position: relative;
+    transition: width 1s, height 1s;
+    width: 25rem;
+    z-index: 10;
+}
+
+.note-img {
+    background-image: url('/static/images/bridge.jpg');
+    background-position: 0 50%;
+    background-size: cover;
+    border-radius: 12px 12px 0 0;
+    height: 50%;
+    position: relative;
+}
+
+.note-content {
+    background-color: rgb(255, 255, 255);
+    border-radius: 0 0 12px 12px;
+    height: calc(50% - 1.6rem);
+    padding: .8rem;
+}
+.note-text {
+    border: none;
+    color: rgba(58, 71, 80, .6);
+    height: 5rem;
+    transition: height 1s;
+}
+
+.note-options {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkmark {
+    cursor: pointer;
+    height: 2rem;
+}
+
+.checkmark-input {
+    display: none;
+}
+
+.date-box {
+    position: relative;
+}
+
+.date-clone {
+    background-color: rgb(238, 87, 87);
+    color: white;
+    font-size: .7rem;
+    padding: .4rem .8rem;
+    height: fit-content;
+    width: fit-content;
+}
+
+.date {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+@media (max-width: 1200px) {
+    .note-box {
+        width: 27rem;
+        height: 18rem;
+    }
+
+    .note {
+        width: 22rem;
+        height: 15rem;
+    }
+
+    .note-text {
+        height: 3.8rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-box {
+        flex-direction: column;
+    }
+
+    .main-text {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .main-description {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-box {
+        padding: .8rem;
+    }
+
+    .note-box {
+        width: 100%;
+    }
+
+    .note {
+        width: 80%;
+    }
+}
+
+@media (max-width: 366px) {
+    .main-description {
+        width: initial;
+        font-size: 1.4rem;
+    }
+}
+
+
+/* BACKGROUND OVERLAY */
+
+.bg-sqr {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 4.7rem);
+    z-index: -1;
+}
+
+.square {
+    background-color: rgba(217, 217, 217, .4);
+    position: absolute;
+}
+
+.sqr1 {
+    bottom: 4rem;
+    height: 9rem;
+    left: 4rem;
+    width: 9rem;
+}
+
+.sqr2 {
+    height: 5rem;
+    left: 4rem;
+    top: 35vh;
+    width: 5rem;
+}
+
+.sqr3 {
+    height: 4rem;
+    left: 20rem;
+    top: 39vh;
+    width: 4rem;
+}
+
+.sqr4 {
+    height: 7rem;
+    left: 10rem;
+    top: 2rem;
+    width: 7rem;
+}
+
+.sqr5 {
+    height: 13rem;
+    right: 39rem;
+    top: 4rem;
+    width: 13rem;
+}
+
+.sqr6 {
+    bottom: 10rem;
+    height: 5rem;
+    right: 58rem;
+    width: 5rem;
+}
+
+.sqr7 {
+    bottom: 4rem;
+    height: 11rem;
+    right: 30rem;
+    width: 11rem;
+}
+
+.sqr8 {
+    bottom: 6rem;
+    height: 4rem;
+    right: 20rem;
+    width: 4rem;
+}
+
+.sqr9 {
+    height: 4rem;
+    right: 12rem;
+    top: 4rem;
+    width: 4rem;
+}
+
+.sqr10 {
+    bottom: 4rem;
+    height: 2rem;
+    right: 8rem;
+    width: 2rem;
+}
+
+.sqr11 {
+    bottom: 16rem;
+    height: 8rem;
+    right: 5rem;
+    width: 8rem;
+}
+
+@media (max-width: 1200px) {
+    .sqr5 {
+        right: 28rem;
+    }
+}
+
+@media (max-width: 1150px) {
+    .sqr6 {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .sqr5 {
+        height: 8rem;
+        right: 20rem;
+        width: 8rem;
+    }
+
+    .sqr7 {
+        display: none;
+    }
+
+    .sqr8 {
+        height: 7rem;
+        width: 7rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .sqr5 {
+        right: 10rem;
+    }
+
+    .sqr9 {
+        right: 2rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .sqr1 {
+        left: 2rem;
+    }
+
+    .sqr3 {
+        display: none;
+    }
+
+    .sqr4 {
+        left: 3rem;
+    }
+
+    .sqr8 {
+        right: 12rem;
+    }
+
+    .sqr10 {
+        height: 3rem;
+        right: 2rem;
+        width: 3rem;
+    }
+
+    .sqr11 {
+        right: 3rem;
+    }
+}
+
+@media (max-width: 525px) {
+    .sqr1 {
+        left: 1rem;
+    }
+
+    .sqr4 {
+        left: 1rem;
+    }
+
+    .sqr5 {
+        height: 5rem;
+        width: 5rem;
+    }
+
+    .sqr8 {
+        right: 7rem;
+    }
+
+    .sqr11 {
+        right: .5rem;
+    }
+}
+
+@media (max-width: 410px) {
+    .sqr1 {
+        bottom: 1rem;
+        height: 6rem;
+        left: 3rem;
+        width: 6rem;
+    }
+
+    .sqr8, .sqr5 {
+        display: none;
+    }
+
+    .sqr9 {
+        right: 5rem;
+    }
+
+    .sqr10 {
+        bottom: 2rem;
+    }
+}
+
+
+/* INFO */
+
+#Info {
+    align-items: center;
+    background-color: rgb(58, 71, 80);
+    color: white;
+    display: flex;
+    font-family: "Montserrat Alternates", sans-serif;
+    gap: 3rem;
+    justify-content: center;
+    padding: 5rem 0;
+    transition: gap 1s;
+}
+
+.service-box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-img {
+    height: 4rem;
+    margin-bottom: 1rem;
+    width: 4rem;
+}
+
+.service-text {
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    #Info {
+        flex-direction: column;
+    }
+}
+
+/* CALENDER */
+
+
+#Calender {
+    padding: 4rem 12rem;
+    position: relative;
+    transition: padding 1s;
+}
+
+.month-toggle {
+    align-items: center;
+    display: flex;
+    position: absolute;
+    right: 12.7rem;
+}
+
+.bi {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.month {
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: right 1s;
+}
+
+.month-box {
+    margin-top: 3rem;
+}
+
+.week-box {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+    transition: gap 1s;
+}
+
+.date-sqr {
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-basis: 100%;
+    font-size: calc(1rem + 1vw);
+    height: 6vw;
+    justify-content: center;
+    transition: height 1s, border-radius 1s;
+}
+.date-sqr:active {
+    background-color: rgb(33, 133, 213);
+    color: white;
+}
+
+.red {
+    border: 3px solid rgb(230, 54, 54);
+}
+
+.yellow {
+    border: 3px solid rgb(238, 223, 87);
+}
+
+.green {
+    border: 3px solid rgb(113, 191, 135);
+}
+
+.blue {
+    background-color: rgb(33, 133, 213) !important;
+    color: rgb(255, 255, 255);
+}
+
+.additional-text {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 300;
+    margin: 3rem 1rem 0;
+    text-align: justify;
+    transition: margin 1s;
+}
+
+.medium {
+    font-weight: 500 !important;
+}
+
+@media (max-width: 900px) {
+    #Calender {
+        padding: 4rem 6rem;
+    }
+
+    .month-toggle {
+        right: 6.7rem;
+    }
+
+    .week-box {
+        gap: 1rem;
+    }
+
+    .red, .green, .yellow {
+        border-width: 2px;
+    }
+
+    .additional-text {
+        margin: 2rem 1rem 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+    #Calender {
+        padding: 3rem;
+    }
+
+    .month-toggle {
+        right: 3.7rem;
+    }
+
+    .week-box {
+        gap: .5rem;
+    }
+
+    .date-sqr {
+        height: 9vw;
+    }
+
+    .red, .yellow, .green {
+        border-width: 1px;
+    }
+}
+
+@media (max-width: 500px) {
+    .date-sqr {
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 450px) {
+    #Calender {
+        padding: 2rem 0;
+    }
+
+    .month-toggle {
+        right: .7rem;
+    }
+}

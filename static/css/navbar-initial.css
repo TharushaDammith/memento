@@ -1,0 +1,121 @@
+.navbar {
+    align-items: center;
+    background-color: rgb(58, 71, 80);
+    color: white;
+    display: flex;
+    font-family: "Nunito", sans-serif;
+    padding: 1.5rem 3rem;
+    transition: padding 1s;
+    z-index: 100;
+}
+
+.nav-brand {
+    font-size: 2rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-list {
+    align-items: center;
+    display: flex;
+    height: fit-content;
+    justify-content: end;
+    position: absolute;
+    right: 3rem;
+    transition: right 1s;
+    width: 100%;
+    z-index: 20;
+}
+
+.open-nav-list {
+    height: 9.8rem !important;
+}
+
+.create {
+    background-color: rgb(33, 133, 213);
+    border-radius: 50px;
+    cursor: pointer;
+    padding: .5rem 1.2rem;
+}
+.create:active {
+    background-color: rgb(26, 106, 170);
+}
+
+.item-margin {
+    margin: 0 1.5rem;
+}
+
+.nav-link {
+    font-size: 1.4rem;
+    font-weight: 200;
+}
+
+.menu {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 1rem;
+    width: 2.5rem;
+}
+
+.menu-line {
+    border: 1px solid white;
+}
+
+.menu-line-margin {
+    margin: .5rem 0;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-list {
+        right: 1rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .nav-list {
+        transition: right 1s;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-brand {
+        font-size: 1.8rem;
+    }
+
+    .nav-list {
+        background-color: rgb(79, 97, 110);
+        flex-direction: column;
+        height: 0rem;
+        justify-content: start;
+        right: 0;
+        top: 4.4rem;
+        transition: none;
+        overflow: hidden;
+    }
+
+    .create {
+        margin-top: 1rem;
+    }
+
+    .nav-item {
+        margin-bottom: 1rem;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .menu {
+        display: block;
+    }
+}

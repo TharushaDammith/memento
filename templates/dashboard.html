@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "header.html" %}
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+        {% if current_user.is_authenticated or posts %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-loggedin.css') }}">
+        {% else %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-initial.css') }}">
+        {% endif %}
+
+        <!--Navbar css-->
+    </head>
+    <body>
+        {% if current_user.is_authenticated or posts %}
+            {% include "navbar-loggedin.html" %}
+        {% else %}
+            {% include "navbar-initial.html" %}
+        {% endif %}
+
+        <input id="Mode" type="hidden" value="{{ theme }}">
+
+        <section id="Dashboard" class="const-height bg">
+            <input type="hidden" id="NoteId" value="{{ note_id }}">
+            <input type="hidden" id="ImgLink" value="{{ img_link }}">
+
+            <div style="display: none" id="Limits">3;7</div>
+            <div class="side-menu" onclick="Sidebar()">
+                <hr class="side-hr">
+                <hr class="side-hr">
+            </div>
+
+            <div class="sidebar">
+                <ul class="side-list">
+                    <li class="side-item">
+                        <a class="side-link txt" href="{{ url_for('settings') }}">Settings</a>
+                    </li>
+                    <li class="side-item">
+                        <a class="side-link txt" href="{{ url_for('calender') }}">Calender</a>
+                    </li>
+                    <li class="side-item">
+                        <a class="side-link active txt" href="{{ url_for('dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="side-item cache-link txt" onclick="ShowCacheBox()">Cache</li>
+                </ul>
+                {% if current_user.is_authenticated %}
+                <p class="username">{{ current_user.name }}</p>
+                {% else %}
+                <p class="username">Anonymous</p>
+                {% endif %}
+            </div>
+
+            {% if posts == 'no_posts' %}
+            <div class="note">
+                <div class="note-img">
+                    <div class="note-menu" onclick="OpenMenu(this)">
+                        <div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row middle-dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <ul class="note-list">
+                        <li class="note-item note-link box" onclick="RedirectToImages(this)">
+                            <p class="item-text txt">New image</p>
+                        </li>
+                        <li class="note-item note-delete box" onclick="DeleteMenu(this)">
+                            <p class="item-text txt">Delete</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="note-content box">
+                    <textarea class="note-text txt" name="description" autofocus>Write here...</textarea>
+                    <div class="note-options">
+                        <div class="date-box">
+                            <div class="date-clone date-label"></div>
+                            <input class="date" type="date">
+                        </div>
+                        <img class="checkmark" src="{{ url_for('static', filename='icons/correct.png') }}" onclick="MarkAsChecked(this)">
+                        <input class="checkmark-input" name="checkmark">
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <div class="note-img">
+                    <div class="note-menu" onclick="OpenMenu(this)">
+                        <div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row middle-dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div></div>
+                </div>
+                    <ul class="note-list">
+                        <li class="note-item note-link box" onclick="RedirectToImages(this)">
+                            <p class="item-text txt">New image</p>
+                        </li>
+                        <li class="note-item note-delete box" onclick="DeleteMenu(this)">
+                            <p class="item-text txt">Delete</p>
+                        </li>
+                    </ul>
+                <div class="note-content box">
+                    <textarea class="note-text txt" name="description" autofocus>Write here...</textarea>
+                    <div class="note-options">
+                        <div class="date-box">
+                            <div class="date-clone date-label"></div>
+                            <input class="date" name="date" type="date">
+                        </div>
+                        <img class="checkmark" src="{{ url_for('static', filename='icons/correct.png') }}" onclick="MarkAsChecked(this)">
+                        <input class="checkmark-input" name="checkmark">
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <div class="note-img">
+                    <div class="note-menu" onclick="OpenMenu(this)"><div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row middle-dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div></div>
+                    <ul class="note-list">
+                        <li class="note-item note-link box" onclick="RedirectToImages(this)">
+                            <p class="item-text txt">New image</p>
+                        </li>
+                        <li class="note-item note-delete box" onclick="DeleteMenu(this)">
+                            <p class="item-text txt">Delete</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="note-content box">
+                    <textarea class="note-text txt" name="description" autofocus>Write here...</textarea>
+                    <div class="note-options">
+                        <div class="date-box">
+                            <div class="date-clone date-label"></div>
+                            <input class="date" type="date">
+                        </div>
+                        <img class="checkmark" src="{{ url_for('static', filename='icons/correct.png') }}" onclick="MarkAsChecked(this)">
+                        <input class="checkmark-input" name="checkmark">
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            {% for post in posts %}
+            <div class="note">
+                <div style="background-image: url('{{ post.image }}')" class="note-img">
+                    <div class="note-menu" onclick="OpenMenu(this)"><div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row middle-dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dot-row">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div></div>
+                    <ul class="note-list">
+                        <li class="note-item note-link box" onclick="RedirectToImages(this)">
+                            <p class="item-text txt">New image</p>
+                        </li>
+                        <li class="note-item note-delete box" onclick="DeleteMenu(this)">
+                            <p class="item-text txt">Delete</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="note-content box">
+                    <textarea class="note-text txt" name="description" autofocus>{{ post.text }}</textarea>
+                    <div class="note-options">
+                        <div class="date-box">
+                            <div class="date-clone">{{ post.expiry_date }}</div>
+                            <input class="date" type="date">
+                        </div>
+                        <img class="checkmark" src="{{ post.check }}" onclick="MarkAsChecked(this)">
+                        <input class="checkmark-input" name="checkmark">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="cache-box box">
+                <div class="minimize-box" onclick="HideCacheBox()">
+                    <hr class="minimize">
+                </div>
+                <textarea class="cache-txt txt" placeholder="The cache gets deleted when the tab is closed." onclick="this.focus();"></textarea>
+            </div>
+        </section>
+
+        <form class="save-box bg" action="{{ url_for('dashboard') }}" method="POST">
+            {% if current_user.is_authenticated %}
+            <button id="RealBtn" class="save-btn" type="submit">Save</button>
+            <a class="save" onclick="Save()">Save</a>
+            {% else %}
+            <a class="save" href="{{ url_for('login') }}" target="_blank">Save</a>
+            {% endif %}
+
+            <input id="Data" class="save-btn" type="password" name="data">
+        </form>
+
+        <footer>
+            {% include "footer.html" %}
+
+            <!--Cache box move-->
+            <script src="{{ url_for('static', filename='js/move-cache.js') }}"></script>
+
+            <!--Dashboard js-->
+            <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+            <!--Navbar js-->
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+            {% if current_user.is_authenticated or posts %}
+            <!--Navbar dropdown js-->
+            <script src="{{ url_for('static', filename='js/navbar-loggedin.js') }}"></script>
+            {% endif %}
+        </footer>
+    </body>
+</html>

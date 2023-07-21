@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "header.html" %}
+
+        <!--Navigation bar CSS-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar-loggedin.css') }}">
+
+        <!--Local CSS-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/images.css') }}">
+    </head>
+    <body>
+        {% include "navbar-loggedin.html" %}
+
+        <input id="Mode" type="hidden" value="{{ theme }}">
+
+        <section id="SearchImage">
+            <form class="search-form" method="POST">
+                <input class="search box txt" value="{{ populate_search }}" name="search" placeholder="Search image" type="text" onclick="NoBorder(this)">
+                <button class="bi bi-search" name="form1" type="submit"></button>
+                <p class="ref txt">Made with Unsplash API</p>
+                <input class="image-link" name="link">
+            </form>
+
+            {% for row in image_links %}
+            <div class="img-box">
+                <div style="background-image: url({{ row[0] }})" class="img">
+                    <div class="note-menu" onclick="OpenMenu(this)"><div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row middle-dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div></div>
+                    <ul class="note-list">
+                        <li class="note-item box">
+                            <a class="item-text txt open-txt" href="{{ row[0] }}" target="_blank">Open image</a>
+                        </li>
+                        <li class="note-item box" onclick="SetImageAs('{{ row[0] }}')">
+                            <p class="item-text txt">Set image as</p>
+                        </li>
+                    </ul></div>
+                <div style="background-image: url({{ row[1] }})" class="img">
+                    <div class="note-menu" onclick="OpenMenu(this)">
+                        <div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row middle-dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div></div>
+                    <ul class="note-list"><li class="note-item box">
+                            <a class="item-text txt open-txt" href="{{ row[1] }}" target="_blank">Open image</a>
+                        </li>
+                        <li class="note-item box" onclick="SetImageAs('{{ row[1] }}')">
+                            <p class="item-text txt">Set image as</p>
+                        </li></ul></div>
+            </div>
+
+            <div class="img-box">
+                <div style="background-image: url({{ row[2] }})" class="img">
+                    <div class="note-menu" onclick="OpenMenu(this)"><div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row middle-dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div></div>
+                    <ul class="note-list">
+                        <li class="note-item box">
+                            <a class="item-text txt open-txt" href="{{ row[2] }}" target="_blank">Open image</a>
+                        </li>
+                        <li class="note-item box" onclick="SetImageAs('{{ row[2] }}')">
+                            <p class="item-text txt">Set image as</p>
+                        </li>
+                    </ul>
+                </div>
+                <div style="background-image: url({{ row[3] }})" class="img">
+                    <div class="note-menu" onclick="OpenMenu(this)"><div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row middle-dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div></div>
+                    <ul class="note-list"><li class="note-item box">
+                            <a class="item-text txt open-txt" href="{{ row[3] }}" target="_blank">Open image</a>
+                        </li>
+                        <li class="note-item box" onclick="SetImageAs('{{ row[3] }}')">
+                            <p class="item-text txt">Set image as</p>
+                        </li>
+                    </ul>
+                </div>
+                <div style="background-image: url({{ row[4] }})" class="img">
+                    <div class="note-menu" onclick="OpenMenu(this)"><div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row middle-dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dot-row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div></div>
+                    <ul class="note-list"><li class="note-item box">
+                            <a class="item-text txt open-txt" href="{{ row[4] }}" target="_blank">Open image</a>
+                        </li>
+                        <li class="note-item box" onclick="SetImageAs('{{ row[4] }}')">
+                            <p class="item-text txt">Set image as</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            <form class="load-more" method="POST">
+                <input id="Load-More" class="image-link" value="{{ populate_search }}" type="text" name="load-more">
+                <input id="Item-Limit" class="image-link" type="number" name="item-limit">
+                <div class="btn" onclick="LoadMore()">Load more</div>
+                <button id="LoadBtn" class="image-link" name="form2" type="submit">Load more</button>
+            </form>
+
+            <form method="POST">
+                <button id="SetImageBtn" class="image-link" name="form3" type="submit"></button>
+                <input type="hidden" id="Link" name="img-link">
+                <input type="hidden" name="note-id" value="{{ id }}">
+            </form>
+        </section>
+
+        <footer>
+            {% include "footer.html" %}
+
+            <!--Navbar js-->
+            <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/navbar-loggedin.js') }}"></script>
+
+            <!--Local JS-->
+            <script src="{{ url_for('static', filename='js/images.js') }}"></script>
+        </footer>
+    </body>
+</html>

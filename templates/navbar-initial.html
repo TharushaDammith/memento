@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <a class="nav-brand" href="{{ url_for('home') }}">Memento</a>
+
+    <ul class="nav-list">
+        <li class="nav-item create" onclick="RedirectTo('dashboard')">
+            <a class="nav-link non-draggable" href="{{ url_for('dashboard') }}" target="_blank">Create</a>
+        </li>
+
+        <li class="nav-item item-margin">
+            <a class="nav-link" href="{{ url_for('sign_up') }}">Sign-up</a>
+        </li>
+
+        <li>
+            <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+        </li>
+    </ul>
+
+    <div class="menu">
+        <hr class="menu-line">
+        <hr class="menu-line menu-line-margin">
+        <hr class="menu-line">
+    </div>
+</nav>
